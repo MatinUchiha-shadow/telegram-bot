@@ -6,7 +6,7 @@ COHERE_URL = "https://api.cohere.com/v2/chat"
 TG_URL = "https://api.telegram.org/bot" + TELEGRAM_TOKEN
 
 user_histories = {}
-SYSTEM = "تو یه دستیار هوشمند فارسی‌زبان هستی. همیشه به فارسی جواب بده مگه اینکه کاربر انگلیسی بنویسه. پاسخ‌هات مفید و واضح باشن."
+SYSTEM = "تو یه دستیار هوشمند فارسی‌زبان هستی. همیشه به فارسی جواب بده مگه اینکه کاربر انگلیسی بنویسه."
 
 def ask_ai(user_id, text):
     if user_id not in user_histories:
@@ -22,7 +22,9 @@ def ask_ai(user_id, text):
         "messages": [{"role": "system", "content": SYSTEM}] + history
     }
     r = requests.post(COHERE_URL, headers=headers, json=data)
-    reply = r.json()["message"]["content"][0]["text"]
+    result = r.json()
+    print("Cohere response:", result)
+    reply = result["message"]["content"][0]["text"]
     user_histories[user_id].append({"role": "assistant", "content": reply})
     return reply
 
@@ -58,7 +60,7 @@ def main():
                     reply = ask_ai(user_id, text)
                     send(chat_id, reply)
                 except Exception as e:
-                    print("خطا: " + str(e))
+                    print("خطا ask_ai: " + str(e))
                     send(chat_id, "خطایی رخ داد. دوباره امتحان کن.")
         except Exception as e:
             print("خطا: " + str(e))
