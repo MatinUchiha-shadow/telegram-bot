@@ -18,7 +18,7 @@ def ask_ai(user_id, text):
         "Content-Type": "application/json"
     }
     data = {
-        "model": "command-r-plus",
+        "model": "command-r7b-12-2024",
         "messages": [{"role": "system", "content": SYSTEM}] + history
     }
     r = requests.post(COHERE_URL, headers=headers, json=data)
