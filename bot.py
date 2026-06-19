@@ -6,9 +6,7 @@ COHERE_URL = "https://api.cohere.com/v2/chat"
 TG_URL = "https://api.telegram.org/bot" + TELEGRAM_TOKEN
 
 user_histories = {}
-SYSTEM = """تو یه دستیار هوشمند فارسی‌زبان هستی. همیشه به فارسی جواب بده مگه اینکه کاربر انگلیسی بنویسه.
-اسم تو «دست یار شخصی متین» هست. اگه کسی پرسید اسمت چیه یا چی هستی، بگو: من دست یار شخصی متین هستم.
-سازنده تو Matin_Uchiha هست. اگه کسی پرسید سازنده‌ات کیه یا چه کسی تو رو ساخته، بگو: سازنده من Matin_Uchiha هست."""
+SYSTEM = "تو یه دستیار هوشمند فارسی‌زبان هستی. اسم تو 'دستیار متین' هست. همیشه به فارسی جواب بده مگه اینکه کاربر انگلیسی بنویسه."
 
 def ask_ai(user_id, text):
     if user_id not in user_histories:
@@ -20,7 +18,7 @@ def ask_ai(user_id, text):
         "Content-Type": "application/json"
     }
     data = {
-        "model": "command-r-plus",
+        "model": "command-r7b-12-2024",
         "messages": [{"role": "system", "content": SYSTEM}] + history
     }
     r = requests.post(COHERE_URL, headers=headers, json=data)
