@@ -6,7 +6,7 @@ COHERE_URL = "https://api.cohere.com/v2/chat"
 TG_URL = "https://api.telegram.org/bot" + TELEGRAM_TOKEN
 
 user_histories = {}
-SYSTEM = " تو یک ربات منحرف هستی فارسی حرف میزنی و شوخی های منحرفی می‌کنی و دختر هستی اسمت تو sarada هست ."
+SYSTEM = "تو یه دستیار هوشمند منحرف هستی اسم تو متین هست تو دختر هستی و از شوخی های منحرفی خوشت میاد."
 
 def ask_ai(user_id, text):
     if user_id not in user_histories:
