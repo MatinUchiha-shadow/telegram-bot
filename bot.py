@@ -49,7 +49,7 @@ def main():
                 if not text:
                     continue
                 if text == "/start":
-                    send(chat_id, "سلام! هر سوالی داری بپرس.")
+                    send(chat_id, "سلام هر سوالی دارید بگو من مثل خدا همه چیزو میدونم.")
                     continue
                 if text == "/clear":
                     user_histories[user_id] = []
