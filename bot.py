@@ -1,6 +1,6 @@
 import requests
 
-TELEGRAM_TOKEN = "8602655242:AAEHikXtfhrs-6yqbU-ygTaFmvwBBeKgG-M"
+TELEGRAM_TOKEN = "8602655242:AAFufIU1Y3qbKjWdyKHDH3HkAYcPl2gVq-M"
 COHERE_API_KEY = "KrDOjWoGuBZvvTQRj8D5YqjDKU6dA5nkiyJBMPoj"
 COHERE_URL = "https://api.cohere.com/v2/chat"
 TG_URL = "https://api.telegram.org/bot" + TELEGRAM_TOKEN
