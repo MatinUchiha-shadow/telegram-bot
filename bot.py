@@ -5,8 +5,8 @@ import base64
 from datetime import datetime
 
 TELEGRAM_TOKEN = "8602655242:AAFufIU1Y3qbKjWdyKHDH3HkAYcPl2gVq-M"
-GEMINI_API_KEY = "AQ.Ab8RN6JTqmdgjH6G3OBPG9UOO5HI8Rte67cBxfOmR-IKbg0lgQ"
-GEMINI_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={GEMINI_API_KEY}"
+GEMINI_API_KEY = "AQ.Ab8RN6IFiiv_1Nn_nzNe0P_D967-lk6QRdUiHxvizABOiA2HUw"
+GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
 TG_URL = "https://api.telegram.org/bot" + TELEGRAM_TOKEN
 HISTORY_FILE = "histories.json"
 USERS_FILE = "users.json"
@@ -116,7 +116,7 @@ def ask_ai(user_id, text=None, image_data=None, image_mime=None, audio_data=None
         "generationConfig": {"maxOutputTokens": 2048}
     }
 
-    r = requests.post(GEMINI_URL, json=payload)
+    r = requests.post(GEMINI_URL, json=payload, headers={"x-goog-api-key": GEMINI_API_KEY, "Content-Type": "application/json"})
     result = r.json()
 
     reply = result["candidates"][0]["content"]["parts"][0]["text"]
